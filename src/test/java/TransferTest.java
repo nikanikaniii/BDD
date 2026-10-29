@@ -16,7 +16,7 @@ class TransferTest {
     DataHelper.CardInfo firstCard = DataHelper.getFirstCardInfo();
     DataHelper.CardInfo secondCard = DataHelper.getSecondCardInfo();
 
-    // Chrome менеджер паролей
+    // менеджер паролей
     @BeforeAll
     static void setUpAll() {
         ChromeOptions options = new ChromeOptions();
@@ -30,7 +30,7 @@ class TransferTest {
         Configuration.browserCapabilities = options;
     }
 
-    // открыть сайт и залогиниться
+
     @BeforeEach
     void setup() {
         open("http://localhost:9999");
@@ -52,7 +52,6 @@ class TransferTest {
         assertEquals(secondBefore + amount, dashboardPage.getCardBalance(secondCard));
     }
 
-    @Disabled("Баг: перевод со второй карты на первую не выполняется, см. issue в репозитории")
     @Test
     void shouldTransferFromSecondToFirst() {
         int firstBefore = dashboardPage.getCardBalance(firstCard);
